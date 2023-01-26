@@ -131,7 +131,7 @@ struct Grid
         for(short j=0;j<H;j++)
         for(short i=0;i<W;i++)
         {
-            scr.data[i+j*W] = (data[i+j*W] == EMPTY) ? '#':'O';
+            scr.data[i+j*W] = (data[i+j*W] == EMPTY) ? '.':'O';
         }
     }
 };
