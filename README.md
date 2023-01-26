@@ -6,7 +6,7 @@ There is only a for loop for iterating through grid points without brancing for 
 Performance for 96*32 grid:
 
 - 2.1GHz FX8150: 13.5 microseconds  (```-O3 -march=native -mavx```)
-- Cascadelake in godbolt.org: 260 nanoseconds (```-O3 -march=native -mavx512f  -mprefer-vector-width=512```)
+- Cascadelake in godbolt.org: 175 nanoseconds (```-O3 -march=native -mavx512f  -mprefer-vector-width=512```)
 
 ## Dependencies
 
