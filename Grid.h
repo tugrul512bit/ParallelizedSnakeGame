@@ -65,15 +65,25 @@ struct Grid
         }
 
         // reduction for collision-checking
-        short coll = 0;
+        alignas(32)
+        short coll[32]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        alignas(32)
+        short zero[32]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
         for(short j=0;j<H;j++)
-        for(short i=0;i<W;i++)
+        for(short i=0;i<W;i+=32)
         {
-        	coll += (reduction[i+j*W]>0);
+        	for(short lane=0;lane<32;lane++)
+        	{
+        		coll[lane] += (reduction[i+lane+j*W]>zero[lane]);
+        	}
         }
 
+        short res = 0;
+        for(short lane=0;lane<32;lane++)
+        	res += coll[lane];
         // if game ends
-        return coll>0;
+        return res>0;
 
     }
 
