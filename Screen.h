@@ -2,14 +2,14 @@
  * Screen.h
  *
  *  Created on: Jan 26, 2023
- *      Author: root
+ *      Author: tugrul
  */
 #include <ncurses.h>
 #ifndef SCREEN_H_
 #define SCREEN_H_
 
 
-template<int W, int H>
+template<short W, short H>
 struct Screen
 {
     const int width,height;
