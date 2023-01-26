@@ -14,7 +14,7 @@ struct Grid
     short data[W*H];
 
     // memory for doing reduction for collision checking
-    short reduction[W*H];
+    char reduction[W*H];
 
     // age information of each grid point (to simulate snake segments)
     short age[W*H];
@@ -100,11 +100,8 @@ struct Grid
 
         // accumulator for collision checking
         alignas(32)
-        short coll[32]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        char coll[32]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-        // zero register
-        alignas(32)
-        const short zero[32]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
         // reduction for collision checking
         for(int j=0;j<H;j++)
@@ -112,11 +109,11 @@ struct Grid
         {
         	for(int lane=0;lane<32;lane++)
         	{
-        		coll[lane] += (reduction[i+lane+j*W]>zero[lane]);
+        		coll[lane] += reduction[i+lane+j*W];
         	}
         }
 
-        short res = 0;
+        char res = 0;
         for(int lane=0;lane<32;lane++)
         	res += coll[lane];
 
