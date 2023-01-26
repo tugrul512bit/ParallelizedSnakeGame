@@ -59,7 +59,7 @@ struct Grid
             const short newHead = isX * isY;
             const short increaseAge = (eat>0);
 
-            age[index] = (snk?(alive?(ag+increaseAge):0):0) + newHead * len;
+            age[index] = (snk*(alive*(ag+increaseAge))) + newHead * len;
             data[index] = alive*SNAKE + newHead * SNAKE;
             reduction[index] = newHead * alive;
         }
