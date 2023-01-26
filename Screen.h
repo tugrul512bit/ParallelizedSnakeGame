@@ -2,19 +2,18 @@
  * Screen.h
  *
  *  Created on: Jan 26, 2023
- *      Author: tugrul
+ *      Author: root
  */
 #include <ncurses.h>
 #ifndef SCREEN_H_
 #define SCREEN_H_
 
 
-template<short W, short H>
+template<int W, int H>
 struct Screen
 {
-    const int width,height;
     char data[W*H];
-    Screen():width(W),height(H){ std::fill(data,data+(W*H),'#'); }
+    Screen(){ std::fill(data,data+(W*H),'#'); }
 
 
     void render(size_t nanoseconds)
