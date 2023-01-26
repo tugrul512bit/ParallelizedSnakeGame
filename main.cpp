@@ -1,3 +1,9 @@
+/*
+ * main program
+ *
+ *  Created on: Jan 26, 2023
+ *      Author: tugrul
+ */
 
 #include <string>
 #include <iostream>
@@ -11,14 +17,18 @@
 int main(int argc, char *argv[])
 {
 
-	// dimensions have to be multiples of 32
-	const int W=96;
-	const int H=32;
+	// x-dimension has to be multiples of 32
+	const int W=128;
+
+	// can be anything
+	const int H=50;
 
 	int ch;
 
-	initscr();
 	resizeterm(W+2,H+2);
+	initscr();
+	clear();
+
 	cbreak();
 	keypad(stdscr, TRUE);
 
@@ -81,4 +91,3 @@ int main(int argc, char *argv[])
 	std::cout<<"average compute time = "<<avgTime/ctFrame<<" nanoseconds"<<std::endl;
 	return 0;
 }
-
