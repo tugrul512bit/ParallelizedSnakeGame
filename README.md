@@ -3,7 +3,10 @@ Classic Snake-Game With Independent Grid-Updates For Efficient Parallelization A
 
 There is only a for loop for iterating through grid points without brancing for efficient parallelization (and auto-vectorization).
 
-96*32 grid is computed in few microseconds regardless of length of snake.
+Performance for 96*32 grid:
+
+- 2.1GHz FX8150: 8 microseconds
+- Cascadelake in godbolt.org: 500 nanoseconds
 
 ## Dependencies
 
