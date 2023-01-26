@@ -11,7 +11,7 @@
 int main(int argc, char *argv[])
 {
 
-
+	// dimensions have to be multiples of 32
 	const int W=96;
 	const int H=32;
 
