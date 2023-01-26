@@ -6,25 +6,25 @@ template<int W, int H>
 struct Grid
 {
     // snake + terrain data
-    char data[W*H];
-    char reduction[W*H];
+    short data[W*H];
+    short reduction[W*H];
     short age[W*H];
     short len;
-    char x,y;
+    short x,y;
 
 
-    const char EMPTY=0;
-    const char SNAKE=1;
-    const char UP = 2;
-    const char DOWN = 3;
-    const char LEFT = 4;
-    const char RIGHT = 5;
+    const short EMPTY=0;
+    const short SNAKE=1;
+    const short UP = 2;
+    const short DOWN = 3;
+    const short LEFT = 4;
+    const short RIGHT = 5;
 
     Grid() { x=W/2; y=H/2; len=1; std::fill(data,data+(W*H),EMPTY); std::fill(age,age+(W*H),0); data[W/2 + (H/2)*W]=SNAKE; age[W/2 + (H/2)*W]=1;  }
 
     // eat=1 means snake ate
     // eat=0 means snake did not eat
-    inline bool compute(const char eat, const char dir, size_t & nanoseconds) noexcept
+    inline bool compute(const short eat, const short dir, size_t & nanoseconds) noexcept
     {
     	Bench bench(&nanoseconds);
 
@@ -43,16 +43,16 @@ struct Grid
         for(int j=0;j<H;j++)
         for(int i=0;i<W;i++)
         {
-            const int index = i+j*W;
-            const char val = data[index];
-            const char snk = (val==SNAKE);
+            const short index = i+j*W;
+            const short val = data[index];
+            const short snk = (val==SNAKE);
             const short ag = age[index]-1;
-            const char alive = (ag>0);
+            const short alive = (ag>0);
 
-            const char isX = (x==i);
-            const char isY = (y==j);
-            const char newHead = isX * isY;
-            const char increaseAge = (eat>0);
+            const short isX = (x==i);
+            const short isY = (y==j);
+            const short newHead = isX * isY;
+            const short increaseAge = (eat>0);
 
             age[index] = (snk?(alive?(ag+increaseAge):0):0) + newHead * len;
             data[index] = alive*SNAKE + newHead * SNAKE;
@@ -60,7 +60,7 @@ struct Grid
         }
 
         // reduction for collision-checking
-        int coll = 0;
+        short coll = 0;
         for(int j=0;j<H;j++)
         for(int i=0;i<W;i++)
         {
@@ -71,6 +71,7 @@ struct Grid
         return coll>0;
 
     }
+
 
     void updateScreen(Screen<W,H> & scr)
     {
