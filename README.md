@@ -7,6 +7,8 @@ Performance for 96*32 (dimensions have to be multiple of 32) grid:
 
 - 2.1GHz FX8150: 6.5 microseconds  (```-O3 -march=native -mavx```)
 - Cascadelake in godbolt.org: 175 nanoseconds (```-O3 -march=native -mavx512f  -mprefer-vector-width=512```)
+- beats 1D-array based snake game at snake length ~750
+- beats linked-list based snake game at snake length ~100
 
 ## Dependencies
 
