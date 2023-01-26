@@ -7,7 +7,7 @@
 
 #include "Screen.h"
 #include "Bench.h"
-template<short W, short H>
+template<int W, int H>
 struct Grid
 {
     // snake + terrain data
@@ -62,11 +62,11 @@ struct Grid
     	y -= (y>H-1)*(H);
 
 
-        for(short j=0;j<H;j++)
-        for(short i=0;i<W;i++)
+        for(int j=0;j<H;j++)
+        for(int i=0;i<W;i++)
         {
         	// current grid index
-            const short index = i+j*W;
+            const int index = i+j*W;
 
             // current grid point data
             const short val = data[index];
@@ -107,17 +107,17 @@ struct Grid
         const short zero[32]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
         // reduction for collision checking
-        for(short j=0;j<H;j++)
-        for(short i=0;i<W;i+=32)
+        for(int j=0;j<H;j++)
+        for(int i=0;i<W;i+=32)
         {
-        	for(short lane=0;lane<32;lane++)
+        	for(int lane=0;lane<32;lane++)
         	{
         		coll[lane] += (reduction[i+lane+j*W]>zero[lane]);
         	}
         }
 
         short res = 0;
-        for(short lane=0;lane<32;lane++)
+        for(int lane=0;lane<32;lane++)
         	res += coll[lane];
 
         // if game ends
