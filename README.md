@@ -1,7 +1,7 @@
 # ParallelizedSnakeGame
-Classic Snake-Game With Independent Grid-Updates For Efficient Parallelization And Constant Computation Time
+Classic Snake-Game With Branchless Independent Grid-Updates For Efficient Parallelization And Constant Computation Time
 
-There is only a for loop for iterating through grid points without brancing for efficient parallelization (and auto-vectorization). All computations are made on 16-bit integers (short) so an AVX2 supported CPU core can compute 16 elements at a time or an AVX512 CPU core can compute 32 elements at once.
+There is only a for loop for iterating through grid points without branching for efficient parallelization (and auto-vectorization). All computations are made on 16-bit integers (short) so an AVX2 supported CPU core can compute 16 elements at a time or an AVX512 CPU core can compute 32 elements at once.
 
 Performance for 96*32 (Width X Height) grid (width has to be multiple of 32):
 
