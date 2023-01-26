@@ -10,6 +10,10 @@ Performance for 96*32 (dimensions have to be multiple of 32) grid:
 - beats 1D-array based snake game at snake length ~750
 - beats linked-list based snake game at snake length ~100
 
+192x64: 26 microseconds / 1.5 microseconds
+
+256x256: 160 microseconds / 8.8 microseconds
+
 ## Dependencies
 
 - ncurses (for console output)
