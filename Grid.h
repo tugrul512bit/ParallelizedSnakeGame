@@ -13,9 +13,6 @@ struct Grid
     // snake + terrain data
     short data[W*H];
 
-    // memory for doing reduction for collision checking
-    char reduction[W*H];
-
     // age information of each grid point (to simulate snake segments)
     short age[W*H];
 
@@ -93,32 +90,11 @@ struct Grid
 
             // if snake is alive, then this is a snake point, if it is head of snake, it is also a snake point
             data[index] = alive*SNAKE + newHead * SNAKE;
-
-            // if this is collision with head
-            reduction[index] = newHead * alive;
         }
 
-        // accumulator for collision checking
-        alignas(32)
-        char coll[32]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-
-        // reduction for collision checking
-        for(int j=0;j<H;j++)
-        for(int i=0;i<W;i+=32)
-        {
-        	for(int lane=0;lane<32;lane++)
-        	{
-        		coll[lane] += reduction[i+lane+j*W];
-        	}
-        }
-
-        char res = 0;
-        for(int lane=0;lane<32;lane++)
-        	res += coll[lane];
-
-        // if game ends
-        return res>0;
+        // if head collides, game ends
+        return data[x+W*y]==(2*SNAKE);
 
     }
 
