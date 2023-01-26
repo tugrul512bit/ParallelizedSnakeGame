@@ -2,7 +2,7 @@
 
 #include "Screen.h"
 #include "Bench.h"
-template<int W, int H>
+template<short W, short H>
 struct Grid
 {
     // snake + terrain data
@@ -40,8 +40,8 @@ struct Grid
     	y -= (y>H-1)*(H);
 
 
-        for(int j=0;j<H;j++)
-        for(int i=0;i<W;i++)
+        for(short j=0;j<H;j++)
+        for(short i=0;i<W;i++)
         {
             const short index = i+j*W;
             const short val = data[index];
@@ -61,8 +61,8 @@ struct Grid
 
         // reduction for collision-checking
         short coll = 0;
-        for(int j=0;j<H;j++)
-        for(int i=0;i<W;i++)
+        for(short j=0;j<H;j++)
+        for(short i=0;i<W;i++)
         {
         	coll += (reduction[i+j*W]>0);
         }
@@ -75,8 +75,8 @@ struct Grid
 
     void updateScreen(Screen<W,H> & scr)
     {
-        for(int j=0;j<H;j++)
-        for(int i=0;i<W;i++)
+        for(short j=0;j<H;j++)
+        for(short i=0;i<W;i++)
         {
             scr.data[i+j*W] = (data[i+j*W] == EMPTY) ? '#':'O';
         }
