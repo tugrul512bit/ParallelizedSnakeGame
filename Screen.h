@@ -2,7 +2,7 @@
  * Screen.h
  *
  *  Created on: Jan 26, 2023
- *      Author: root
+ *      Author: tugrul
  */
 #include <ncurses.h>
 #ifndef SCREEN_H_
