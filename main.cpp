@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
 
 	// x-dimension to be multiples of 16 for performance
-	const int W=112;
+	const int W=16*6;
 
 	// can be anything
 	const int H=32;
