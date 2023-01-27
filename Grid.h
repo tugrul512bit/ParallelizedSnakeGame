@@ -58,6 +58,7 @@ struct Grid
     	y += (y<0)*(H);
     	y -= (y>H-1)*(H);
 
+    	bool collided = (data[x+W*y]==SNAKE) && (age[x+W*y]>0);
 
         for(int j=0;j<H;j++)
         for(int i=0;i<W;i++)
@@ -68,33 +69,28 @@ struct Grid
             // current grid point data
             const short val = data[index];
 
-            // is this point a snake?
-            const short snk = (val==SNAKE);
-
             // age of current point with decrement (benjamin button)
             const short ag = age[index]-1;
 
             // is this point alive? (0=dead)
             const short alive = (ag>0);
 
-            // is this point on snake-head position?
-            const short isX = (x==i);
-            const short isY = (y==j);
-            const short newHead = isX * isY;
 
-            // if eating is enabled, age is increased (1 more frame life)
-            const short increaseAge = (eat>0);
+            const short newAge = ((ag<0)?0:ag);
+
 
             // if it is head, age = maximum, if it is tail and eating, age = inceased, if it is tail but not eating, age = decreased
-            age[index] = (snk*(alive*(ag+increaseAge))) + newHead * len;
+            age[index] = alive * newAge;
 
             // if snake is alive, then this is a snake point, if it is head of snake, it is also a snake point
-            data[index] = alive*SNAKE + newHead * SNAKE;
+            data[index] = alive*val + (1-alive)*EMPTY;
         }
 
+        data[x+W*y]=SNAKE;
+        age[x+W*y]=len;
 
         // if head collides, game ends
-        return data[x+W*y]==(2*SNAKE);
+        return collided;
 
     }
 
