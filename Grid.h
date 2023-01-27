@@ -60,6 +60,8 @@ struct Grid
 
     	bool collided = (data[x+W*y]==SNAKE) && (age[x+W*y]>0);
 
+    	short eating = eat>0;
+
         for(int j=0;j<H;j++)
         for(int i=0;i<W;i++)
         {
@@ -80,7 +82,7 @@ struct Grid
 
 
             // if it is head, age = maximum, if it is tail and eating, age = inceased, if it is tail but not eating, age = decreased
-            age[index] = alive * newAge;
+            age[index] = alive * (newAge + eating);
 
             // if snake is alive, then this is a snake point, if it is head of snake, it is also a snake point
             data[index] = alive*val + (1-alive)*EMPTY;
