@@ -51,6 +51,7 @@ struct Grid
     	y += (y<0)*(H);
     	y -= (y>H-1)*(H);
 
+    	// is head of snake colliding?
     	bool collided = (age[x+W*y]>0);
 
     	const short eating = eat>0;
@@ -67,6 +68,7 @@ struct Grid
             // is this point alive? (0=dead)
             const short alive = (ag>0);
 
+            // clamp new age to [0,n)
             const short newAge = ((ag<0)?0:ag);
 
             // if it is head, age = maximum, if it is tail and eating, age = inceased, if it is tail but not eating, age = decreased
@@ -74,6 +76,7 @@ struct Grid
 
         }
 
+        // add snake head
         age[x+W*y]=len;
 
         // if head collides, game ends
