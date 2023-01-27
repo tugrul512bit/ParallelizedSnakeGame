@@ -12,12 +12,15 @@ struct Grid
 {
 
     // age information of each grid point (to simulate snake segments)
+	alignas(64)
     short age[W*H];
 
     // snake length (used for deciding max age of snake segments)
+	alignas(64)
     short len;
 
     // snake head position
+	alignas(64)
     short x,y;
 
 
@@ -57,6 +60,7 @@ struct Grid
     	const short eating = eat>0;
 
         for(int j=0;j<H;j++)
+		#pragma GCC ivdep
         for(int i=0;i<W;i++)
         {
         	// current grid index
