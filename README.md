@@ -7,8 +7,8 @@ Performance for 96*32 (Width X Height) grid (width = multiple of 16 means higher
 
 - 2.1GHz FX8150 CPU: **2.2 microseconds**  (```-O3 -march=native -mavx```)
 - Cascadelake CPU in godbolt.org: **76 nanoseconds** (```-O3 -march=native -mavx512f  -mprefer-vector-width=512```)
-- beats 1D-array based snake game at snake length ~750
-- beats linked-list based snake game at snake length ~100
+- beats 1D-array based snake game at snake length ~200
+- beats linked-list based snake game at snake length ~25
 
 128x50: Bulldozer **4.1 microseconds** / Cascadelake **144 nanoseconds**
 
