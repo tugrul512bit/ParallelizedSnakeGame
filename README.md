@@ -6,7 +6,7 @@ There is only a for loop for iterating through grid points without branching for
 Performance for 96*32 (Width X Height) grid (width = multiple of 16 means higher performance due to SIMD capabilities of CPUs):
 
 - 2.1GHz FX8150 CPU: 2.2 microseconds  (```-O3 -march=native -mavx```)
-- Cascadelake CPU in godbolt.org: 138 nanoseconds (```-O3 -march=native -mavx512f  -mprefer-vector-width=512```)
+- Cascadelake CPU in godbolt.org: *76 nanoseconds* (```-O3 -march=native -mavx512f  -mprefer-vector-width=512```)
 - beats 1D-array based snake game at snake length ~750
 - beats linked-list based snake game at snake length ~100
 
