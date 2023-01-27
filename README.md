@@ -5,18 +5,18 @@ There is only a for loop for iterating through grid points without branching for
 
 Performance for 96*32 (Width X Height) grid (width has to be multiple of 32):
 
-- 2.1GHz FX8150 CPU: 4 microseconds  (```-O3 -march=native -mavx```)
+- 2.1GHz FX8150 CPU: 2.2 microseconds  (```-O3 -march=native -mavx```)
 - Cascadelake CPU in godbolt.org: 138 nanoseconds (```-O3 -march=native -mavx512f  -mprefer-vector-width=512```)
 - beats 1D-array based snake game at snake length ~750
 - beats linked-list based snake game at snake length ~100
 
-128x50: 8.6 microseconds / 283 nanoseconds
+128x50: 4.1 microseconds / 283 nanoseconds
 
 192x64: 15.2 microseconds / 630 nanoseconds (data in L1 cache)
 
-256x256: 68 microseconds / 4.3 microseconds (data in L2 cache)
+256x256: 53 microseconds / 4.3 microseconds (data in L2 cache)
 
-1024x1024: 1.2 milliseconds / 143 microseconds (data in L3 cache)
+1024x1024: 553 microseconds / 143 microseconds (data in L3 cache)
 
 ## Dependencies
 
