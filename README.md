@@ -10,13 +10,13 @@ Performance for 96*32 (Width X Height) grid (width has to be multiple of 32):
 - beats 1D-array based snake game at snake length ~750
 - beats linked-list based snake game at snake length ~100
 
-128x50: 4.1 microseconds / 283 nanoseconds
+128x50: 4.1 microseconds / 197 nanoseconds
 
-192x64: 15.2 microseconds / 630 nanoseconds (data in L1 cache)
+192x64: 15.2 microseconds / 286 nanoseconds (data in L1 cache)
 
-256x256: 53 microseconds / 4.3 microseconds (data in L2 cache)
+256x256: 53 microseconds / 1.9 microseconds (data in L2 cache)
 
-1024x1024: 553 microseconds / 143 microseconds (data in L3 cache)
+1024x1024: 553 microseconds / 90 microseconds (data in L3 cache)
 
 ## Dependencies
 
